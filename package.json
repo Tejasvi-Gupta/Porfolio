@@ -1,0 +1,36 @@
+{
+  "name": "tejasvi-portfolio",
+  "version": "2.7.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "preview": "tsx --tsconfig preview/tsconfig.json preview/build.mjs",
+    "test:browser": "playwright test",
+    "build:static": "npm run build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint app components content public preview tests/production *.mjs *.ts",
+    "test:preview": "python tests/smoke.py && python tests/premium.py && python tests/contact.py"
+  },
+  "dependencies": {
+    "next": "^16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.6",
+    "lighthouse": "^13.6.0",
+    "postcss": "^8.5.0",
+    "prettier": "^3.10.1",
+    "tailwindcss": "^4.1.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.8.0"
+  }
+}

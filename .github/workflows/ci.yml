@@ -1,0 +1,37 @@
+name: Portfolio checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      SITE_URL: https://portfolio.example
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm audit --audit-level=high
+      - run: npm run build
+      - run: npm run preview
+      - run: pip install playwright
+      - run: python -m playwright install --with-deps chromium
+      - run: npm run test:preview
+      - run: npx playwright install chromium
+      - run: npm run test:browser
+      - run: python tests/static.py
+      - run: |
+          python -m http.server 4174 --bind 127.0.0.1 --directory out &
+          npx lighthouse http://127.0.0.1:4174 --chrome-flags="--headless --no-sandbox" --output=json --output-path=lighthouse.json --quiet
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse
+          path: lighthouse.json
