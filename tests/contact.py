@@ -1,9 +1,12 @@
 import os
 from playwright.sync_api import sync_playwright
 from pathlib import Path
-import json
+import json, re
 from urllib.parse import unquote
 html=(Path(__file__).resolve().parents[1]/'preview/index.html').read_text(encoding='utf-8')
+# Exercise the unconfigured fallback independently of the deployed public settings.
+html, count = re.subn(r'"emailjs":\{[^{}]*\}', '"emailjs":{"serviceId":"","templateId":"","publicKey":""}', html, count=1)
+assert count == 1
 with sync_playwright() as p:
  b=p.chromium.launch(executable_path=os.environ.get('CHROME_PATH'),args=['--no-sandbox']);page=b.new_page(viewport={'width':390,'height':844});errors=[];page.on('pageerror',lambda e:errors.append(str(e)));page.set_content(html,wait_until='domcontentloaded');page.set_default_timeout(5000)
  # Copy silently, including fallback and failure paths.

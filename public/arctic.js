@@ -158,6 +158,7 @@
     a.href = resumeUrl;
     a.download = "Tejasvi_Gupta_Resume.pdf";
   });
+  $("[data-open-resume]").href = resumeUrl;
   function showResume() {
     $("#resume-frame").src = resumeUrl;
     $("#resume-dialog").showModal();

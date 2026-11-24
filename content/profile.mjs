@@ -13,7 +13,7 @@ export const profile = {
   rating: "1286",
   email: "tejasvi.work08@gmail.com",
   // EmailJS public configuration; leave blank to use the email-app fallback.
-  emailjs: { serviceId: "", templateId: "", publicKey: "" },
+  emailjs: { serviceId: "service_25wid69", templateId: "template_w54j6uh", publicKey: "HgGCjGZDWLeT14Tg1" },
   socials: [
     ["GitHub", "https://github.com/Tejasvi-Gupta"],
     ["LinkedIn", "https://www.linkedin.com/in/tejasvi-gupta08"],

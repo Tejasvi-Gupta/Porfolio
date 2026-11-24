@@ -111,6 +111,9 @@ export function Dialogs() {
           >
             Download PDF ↓
           </a>
+          <a className="button" data-open-resume href="/resume/Tejasvi_Gupta_Resume.pdf" target="_blank" rel="noopener noreferrer">
+            Open PDF in new tab
+          </a>
           <iframe id="resume-frame" title="Résumé PDF"></iframe>
         </div>
       </dialog>
