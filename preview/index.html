@@ -67,7 +67,7 @@ html[data-theme=light] .gradient-text{background-image:linear-gradient(110deg,#1
 
 @media (max-width:760px){.glass{backdrop-filter:blur(10px) saturate(125%)}}
 
-:is(#email-dialog, #resume-dialog) {
+:is(#email-dialog, #resume-dialog, #project-dialog) {
   position: fixed;
   inset: 0;
   margin: auto;
@@ -77,9 +77,9 @@ html[data-theme=light] .gradient-text{background-image:linear-gradient(110deg,#1
   overflow-y: auto;
   overscroll-behavior: contain;
 }
-html:has(:is(#email-dialog, #resume-dialog)[open]) { overflow: hidden; }
+html:has(:is(#email-dialog, #resume-dialog, #project-dialog)[open]) { overflow: hidden; }
 @media (max-width: 560px) {
-  :is(#email-dialog, #resume-dialog) { width: calc(100% - 1rem); max-height: calc(100dvh - 1rem); }
+  :is(#email-dialog, #resume-dialog, #project-dialog) { width: calc(100% - 1rem); max-height: calc(100dvh - 1rem); }
   #email-dialog .dialog-inner { padding: 1rem; }
   #email-dialog input, #email-dialog textarea { font-size: 1rem; }
 }
