@@ -25,12 +25,11 @@
     setTheme(root.dataset.theme === "dark" ? "light" : "dark"),
   );
   if ("IntersectionObserver" in window && !reduced.matches) {
-    document.body.classList.add("reveal-ready");
     const obs = new IntersectionObserver(
       (entries) =>
         entries.forEach((e) => {
           if (e.isIntersecting) {
-            e.target.classList.add("visible");
+            if (window.scrollY > 0) e.target.classList.add("section-entered");
             obs.unobserve(e.target);
           }
         }),
@@ -160,7 +159,13 @@
   });
   $("[data-open-resume]").href = resumeUrl;
   function showResume() {
-    $("#resume-frame").src = resumeUrl;
+    if (!$("#resume-frame")) {
+      const frame = document.createElement("iframe");
+      frame.id = "resume-frame";
+      frame.title = "Résumé PDF";
+      frame.src = resumeUrl;
+      $("#resume-preview").append(frame);
+    }
     $("#resume-dialog").showModal();
   }
   $("[data-view-resume]").onclick = showResume;

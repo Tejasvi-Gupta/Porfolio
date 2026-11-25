@@ -40,7 +40,7 @@ html[data-theme=light] .ice-grid{background-image:linear-gradient(to right,#195d
 .stat{padding:23px 18px;text-align:left;gap:4px}.stat strong{font-size:36px;line-height:1.1}.stat span{letter-spacing:.04em}.stat:after{border-radius:inherit}.stats{gap:16px}
 .section-head .eyebrow{letter-spacing:.2em}.section-head h2{font-weight:760}.section-head{margin-bottom:28px}.project-grid{grid-template-columns:repeat(12,minmax(0,1fr));gap:20px}.project{grid-column:span 6;padding:12px}.project:nth-child(1),.project:nth-child(4){grid-column:span 7}.project:nth-child(2),.project:nth-child(3){grid-column:span 5}.project-grid:has(.project[hidden]) .project{grid-column:span 12;max-width:720px;width:100%}.project-cover{border:1px solid var(--line);border-radius:19px}.project-cover img,.project-cover .diagram{transition:transform .55s ease}.project-cover:hover img,.project-cover:hover .diagram{transform:scale(1.035)}.cover-arrow{box-shadow:inset 0 1px 0 #c6eaff55;backdrop-filter:blur(14px)}.project-body{padding:20px 15px 16px}.chip{border-radius:999px;padding:4px 9px}
 .contact{position:relative;overflow:hidden;box-shadow:inset 0 1px 1px var(--edge),0 20px 50px var(--shadow)}
-html[data-effects=paused] *,html[data-effects=paused] *:before,html[data-effects=paused] *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}html[data-effects=paused] .interactive,html[data-effects=paused] .portrait:hover img,html[data-effects=paused] .project-cover:hover img,html[data-effects=paused] .project-cover:hover .diagram{transform:none!important}html[data-effects=paused] .reveal-ready .section{opacity:1;transform:none}
+html[data-effects=paused] *,html[data-effects=paused] *:before,html[data-effects=paused] *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}html[data-effects=paused] .interactive,html[data-effects=paused] .portrait:hover img,html[data-effects=paused] .project-cover:hover img,html[data-effects=paused] .project-cover:hover .diagram{transform:none!important}
 @media(max-width:900px){.brand-word{display:none}.hero{gap:24px}.portrait-img{height:320px}.hero h1{font-size:clamp(44px,6.5vw,74px)}}
 @media(max-width:760px){.nav{display:grid;grid-template-columns:1fr auto;gap:7px;padding:9px 11px}.brand-word{display:block}.nav nav{grid-row:2;grid-column:1/-1;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding:4px 1px 0;font-size:12px}.nav nav a:nth-child(n){display:block}.nav-actions{justify-self:end;gap:6px}.brand-mark{min-width:40px;height:36px;font-size:21px}.hero{grid-template-columns:1fr;gap:16px;padding:39px 0 24px;min-height:0}.hero h1{font-size:clamp(43px,10vw,66px)}.hero p{font-size:15px}.portrait-stage{padding:14px 10px 27px;max-width:420px;width:100%;justify-self:center}.portrait{max-width:300px}.portrait-img{height:300px}.portrait-tag{right:0;bottom:8px}.orbit{width:99%}.stats{gap:10px}.stat{padding:17px 14px}.stat strong{font-size:29px}.project-grid{grid-template-columns:minmax(0,1fr)}.project-grid .project:nth-child(n){grid-column:1/-1}.section-head{margin-bottom:20px}.project-body h3{font-size:23px}.hero-index{margin-top:20px}}
 @media(max-width:350px){.brand-word{display:none}.icon-btn{min-width:32px}.hero .eyebrow{font-size:8px}.portrait-img{height:260px}}
@@ -80,4 +80,22 @@ html:has(:is(#email-dialog, #resume-dialog, #project-dialog)[open]) { overflow: 
   :is(#email-dialog, #resume-dialog, #project-dialog) { width: calc(100% - 1rem); max-height: calc(100dvh - 1rem); }
   #email-dialog .dialog-inner { padding: 1rem; }
   #email-dialog input, #email-dialog textarea { font-size: 1rem; }
+}
+/* Gradients supply the frosted surface on cards. Only the floating header
+   needs to blur moving content behind it. */
+.glass:not(.nav) { backdrop-filter: none; }
+.nav { backdrop-filter: none; background-color: var(--solid); }
+.aurora::before { inset: 0; filter: none; animation: none; }
+.interactive:not(:hover) { transform: none; }
+
+.portrait-img picture { display: contents; }
+.interactive { transform-style: flat; }
+.project { content-visibility: auto; contain-intrinsic-block-size: auto 480px; }
+@media (max-width: 760px) {
+  .aurora, html[data-theme=light] .aurora { background: var(--bg) url(/images/aurora-dark.webp) center top / cover; }
+  html[data-theme=light] .aurora { background-image: url(/images/aurora-light.webp); }
+  .aurora::before, .ice-grid { display: none; }
+}
+@media (hover: none) {
+  .interactive::before, .interactive::after { content: none; }
 }

@@ -50,6 +50,8 @@ export function Hero() {
           <div className="orbit orbit-c" aria-hidden="true"></div>
           <div className="portrait glass interactive">
             <div className="portrait-img">
+              <picture>
+                <source type="image/avif" media="(max-width: 760px)" srcSet="/images/profile-small.avif" />
               <img
                 src="/images/profile.webp"
                 srcSet="/images/profile-small.webp 640w, /images/profile.webp 1200w" sizes="(max-width: 760px) 300px, 420px" fetchPriority="high"
@@ -57,6 +59,7 @@ export function Hero() {
                 width="1200"
                 height="1600"
               />
+              </picture>
             </div>
             <div className="portrait-label">
               <span className="brand-mark">TG.</span>

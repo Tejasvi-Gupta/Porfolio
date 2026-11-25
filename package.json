@@ -10,7 +10,7 @@
     "test:browser": "playwright test",
     "build:static": "npm run build",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint app components content public preview tests/production *.mjs *.ts",
+    "lint": "eslint app pages components content public preview tests/production *.mjs *.ts",
     "test:preview": "python tests/smoke.py && python tests/premium.py && python tests/contact.py"
   },
   "dependencies": {

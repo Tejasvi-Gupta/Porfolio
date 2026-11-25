@@ -91,5 +91,5 @@
   }
   window.addEventListener("scroll", schedule, { passive: true });
   window.addEventListener("resize", schedule);
-  schedule();
+  if (window.scrollY > 0) schedule();
 })();

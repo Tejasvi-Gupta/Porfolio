@@ -1,6 +1,6 @@
 # Arctic Glass V2.7 Production Edition
 
-Tejasvi Gupta’s portfolio uses Next.js App Router, React, TypeScript and static export. The original outdoor portrait, NETRA screenshot and résumé are in `public/`. The homepage keeps the V2.6 Arctic Blue layout, themes, motion controls, keyboard commands and contact dialog. Project cover buttons open quick previews. Case study links open dedicated pages.
+Tejasvi Gupta’s portfolio uses Next.js, React, TypeScript and static export. The homepage is prerendered with the Pages Router and runs its two interaction scripts directly. Project detail pages use the App Router. The original outdoor portrait, NETRA screenshot and résumé are in `public/`. The homepage keeps the V2.6 Arctic Blue layout, themes, motion controls, keyboard commands and contact dialog. Project cover buttons open quick previews. Case study links open dedicated pages.
 
 ## Local setup
 
